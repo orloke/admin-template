@@ -7,7 +7,7 @@ import { IconGoogle } from '../components/icons';
 
 const Authentication = () => {
 
-    const [mode, setModo] = useState<'login'| 'register'>('login')
+    const [mode, setMode] = useState<'login'| 'register'>('login')
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
 
@@ -24,12 +24,12 @@ const Authentication = () => {
 
   return (
     <div className='flex h-screen items-center justify-center' >
-      <div className='bg-blue-500 w-1/2 h-screen relative'>
+      <div className='bg-blue-500 w-1/2 h-screen relative hidden md:block lg:w-2/3'>
         <Image src="http://source.unsplash.com/random" alt="Imagem tela de autenticação" layout='fill' />
       </div>
-      <div className='w-1/2' >
+      <div className='w-full mx-10 md:w-1/2 lg:w-1/3' >
         <h1 className={`
-          text-xl font-bold mb-5
+          text-3xl font-bold mb-5
         `} >
           {mode === 'login' ? 'Entre com a Sua Conta': 'Cadastre-se na Plataforma'}
         </h1>
@@ -62,9 +62,26 @@ const Authentication = () => {
           w-full bg-red-500 hover:bg-red-400
           text-white rounded-lg px-4 py-3
         `} >
-          Entrar com o Google
+          {mode === 'login'? 'Entrar com o Google': 'Se cadastre com o Google' }
           {IconGoogle}
+
         </button>
+
+        {mode === 'login' ? (
+          <p className='mt-8' >
+            Novo por aqui? 
+              <a onClick={() => setMode('register')}
+                className = {`text-blue-500 hover:text-blue-700 font-semibold cursor-pointer`}
+              > Crie sua conta gratuitamente</a>            
+          </p>
+        ):(
+          <p className='mt-8' >
+            Já possui conta?
+              <a onClick={() => setMode('login')}
+                className = {`text-blue-500 hover:text-blue-700 font-semibold cursor-pointer`}
+              > Login!</a>            
+          </p>
+        )}
 
       </div>
     </div>
