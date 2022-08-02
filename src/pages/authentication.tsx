@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React, { useState } from 'react';
 import AuthInput from '../components/auth/AuthInput';
 import { IconGoogle } from '../components/icons';
@@ -22,7 +23,10 @@ const Authentication = () => {
     }
 
   return (
-    <div className='flex flex-col h-screen items-center justify-center' >
+    <div className='flex h-screen items-center justify-center' >
+      <div className='bg-blue-500 w-1/2 h-screen relative'>
+        <Image src="http://source.unsplash.com/random" alt="Imagem tela de autenticação" layout='fill' />
+      </div>
       <div className='w-1/2' >
         <h1 className={`
           text-xl font-bold mb-5
