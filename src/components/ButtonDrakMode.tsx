@@ -43,7 +43,7 @@ const ButtonDarkMode= (props: Props) => {
                 bg-black text-yellow-600
                 w-6 h-6 rounded-full
             `} >
-                {IconMoon(4)}
+                {IconMoon(1)}
             </div>
         </div>
     )
