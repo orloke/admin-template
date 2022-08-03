@@ -2,10 +2,13 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import AuthInput from '../components/auth/AuthInput';
 import { IconGoogle, IconWarning } from '../components/icons';
+import useAuth from '../data/hooks/useAuth';
 
 // import { Container } from './styles';
 
 const Authentication = () => {
+
+  const {user, loginGoogle} = useAuth()
 
     const [mode, setMode] = useState<'login'| 'register'>('login')
     const [email, setEmail] = useState('')
@@ -21,10 +24,10 @@ const Authentication = () => {
 
       if (mode === 'login') {
         console.log('logar');
-        showError('Erro ao fazer Login!', 2)       
+        showError('Erro ao fazer Login!')       
       }else{
         console.log('Cadastrar');
-        showError('Erro ao Cadastrar!', 2)     
+        showError('Erro ao Cadastrar!')     
         
       }
 
@@ -47,7 +50,7 @@ const Authentication = () => {
         {error ? (
           <div className='bg-red-400 text-white py-3 px-5 my-2 flex items-center border border-red-700 rounded-lg' >
             {IconWarning(6)}
-            <span className='ml-3' >{error}</span>
+            <span className='ml-2' >{error}</span>
           </div>
         ): false}
 
@@ -76,7 +79,7 @@ const Authentication = () => {
 
         <hr className = {`my-6 border-gray-300 w-full`} />
 
-        <button onClick={submit} className = {`
+        <button onClick={loginGoogle} className = {`
           flex justify-center items-center
           w-full bg-red-500 hover:bg-red-400
           text-white rounded-lg px-4 py-3

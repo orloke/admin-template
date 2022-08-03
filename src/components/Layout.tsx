@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import useAppData from "../data/hooks/useAppData";
+import Avatar from "./Avatar";
 import ButtonDarkMode from "./ButtonDrakMode";
 import Content from "./Content";
 import { IconMenu } from "./icons";
@@ -37,7 +38,10 @@ const Layout = (props: Props) => {
             </div>
 
         <div className="flex flex-col w-full bg-gray-400 dark:bg-gray-800 items-end" >
-            <ButtonDarkMode thema={tema} changeThema={changeThema} />
+            <div className="flex mt-2" >
+                <ButtonDarkMode thema={tema} changeThema={changeThema} />
+                <Avatar className="h-8 w-8 rounded-full cursor-pointer mx-2" />
+            </div>
             <div className={`flex flex-col h-screen w-full pt-20 sm:pt-7 pl-2   ${open?'':'pl-2'} `} >
                 <TopBar title={props.title} caption={props.caption} />
                 <Content>

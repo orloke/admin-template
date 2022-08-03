@@ -8,7 +8,7 @@ interface Props {
 const ButtonDarkMode= (props: Props) => {
     return props.thema === 'dark' ? (
         <div className={`
-                m-2 bg-slate-50 hidden sm:flex items-center bg-gradient-to-r from-yellow-300 to-yellow-600 w-14
+                bg-slate-50 hidden sm:flex items-center bg-gradient-to-r from-yellow-300 to-yellow-600 w-14
                 lg:w-24 h-8 cursor-pointer p-1 rounded-full
             `} 
             onClick={props.changeThema} 
@@ -28,7 +28,7 @@ const ButtonDarkMode= (props: Props) => {
         </div>
     ): (
         <div className={`
-                m-2 hidden sm:flex items-center justify-end bg-gradient-to-r from-gray-500 to-gray-900 w-14
+                hidden sm:flex items-center justify-end bg-gradient-to-r from-gray-500 to-gray-900 w-14
                 lg:w-24 h-8 cursor-pointer p-1 rounded-full
             `} 
             onClick={props.changeThema} 
