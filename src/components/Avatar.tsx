@@ -14,8 +14,7 @@ const Avatar = (props: Props) => {
         <img 
             src={user?.avatar ?? '/avatar.svg'} 
             alt="imagem do usuario"
-            className={props.className} 
-
+            className={props.className}
         />
     </Link>
   )
