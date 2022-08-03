@@ -8,11 +8,11 @@ import useAuth from '../data/hooks/useAuth';
 
 const Authentication = () => {
 
-  const {user, loginGoogle} = useAuth()
+  const { loginGoogle, loginEmail, register} = useAuth()
 
     const [mode, setMode] = useState<'login'| 'register'>('login')
     const [email, setEmail] = useState('')
-    const [senha, setSenha] = useState('')
+    const [password, setPassword] = useState('')
     const [error, setError] = useState('')
 
     const showError = (msg = '', time = 5 ) => {
@@ -20,14 +20,21 @@ const Authentication = () => {
       setTimeout(() => setError(''), time * 1000)
     }
 
-    const submit = () => {
+    const submit = async () => {
+      try{
+        if (mode === 'login' && loginEmail) {
+          
+          await loginEmail(email, password)
 
-      if (mode === 'login') {
-        console.log('logar');
-        showError('Erro ao fazer Login!')       
-      }else{
-        console.log('Cadastrar');
-        showError('Erro ao Cadastrar!')     
+        }else if(register){
+      
+          await register(email, password)    
+          
+        }
+
+      }catch(e: any){
+        
+        setError(e?.message ?? 'Erro desconhecido!')
         
       }
 
@@ -36,13 +43,13 @@ const Authentication = () => {
   return (
     <div className='flex h-screen items-center justify-center' >
 
-      <div className='w-1/2 h-screen relative hidden md:block lg:w-2/3'>
-        <Image src="http://source.unsplash.com/random" alt="Imagem tela de autenticação" layout='fill' />
+      <div className='w-1/2 h-screen hidden md:block lg:w-2/3 bg-cover bg-center'  style={{backgroundImage:'url(http://source.unsplash.com/random)'}}>
+
       </div>
 
       <div className='w-full mx-10 md:w-1/2 lg:w-1/3' >
         <h1 className={`
-          text-3xl font-bold mb-5
+          text-3xl font-bold mb-5 max-h-screen
         `} >
           {mode === 'login' ? 'Entre com a Sua Conta': 'Cadastre-se na Plataforma'}
         </h1>
@@ -64,8 +71,8 @@ const Authentication = () => {
         />
         <AuthInput
             label='Senha'
-            value={senha}
-            onChange={setSenha}
+            value={password}
+            onChange={setPassword}
             type = 'password'
             
         />

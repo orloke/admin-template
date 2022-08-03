@@ -7,6 +7,8 @@ import User from '../../types/User';
 interface AuthContextProps{
     user?: User;
     loading?: boolean
+    loginEmail?: (email:string, password:string) => Promise<void>
+    register?: (email:string, password:string) => Promise<void>
     loginGoogle?: ()=>Promise<void>
     logout?: ()=>Promise<void>
 }
@@ -61,6 +63,40 @@ export const AuthProvider = (props: Props) => {
         }
     }
     
+    const register = async (email: string, password: string) => {
+
+        try{
+            setLoading(true)
+            const resp = await firebase.auth().createUserWithEmailAndPassword(email, password)
+
+            if (resp.user) {
+                await settingSection(resp.user)
+                Router.push('/')                
+            }
+        }
+        finally{
+            setLoading(false)
+        }
+
+    }
+
+    const loginEmail = async (email: string, password: string) => {
+
+        try{
+            setLoading(true)
+            const resp = await firebase.auth().signInWithEmailAndPassword(email, password)
+
+            if (resp.user) {
+                await settingSection(resp.user)
+                Router.push('/')                
+            }
+        }
+        finally{
+            setLoading(false)
+        }
+
+    }
+
     const loginGoogle = async () => {
 
         try{
@@ -69,7 +105,7 @@ export const AuthProvider = (props: Props) => {
                 new firebase.auth.GoogleAuthProvider()
             ) 
             if (resp.user) {
-                settingSection(resp.user)
+                await settingSection(resp.user)
                 Router.push('/')                
             }
         }
@@ -93,14 +129,16 @@ export const AuthProvider = (props: Props) => {
     useEffect(() => {
         const cancel = firebase.auth().onIdTokenChanged(settingSection as any)
         return () => cancel()
-
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
   return (
     <AuthContext.Provider value={{
         user,
         loginGoogle,
+        loginEmail,
         logout,
+        register,
         loading
     }}>
 
