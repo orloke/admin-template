@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 interface AppContextProps {
     tema?: string;
@@ -17,8 +17,16 @@ export function AppProvider (props: Props){
     const [tema, setTema] = useState('')
 
     const changeThema = () => {
-        setTema(tema === ''? 'dark' : '')        
+        const newThema = tema === ''? 'dark' : ''
+        setTema(newThema)
+        localStorage.setItem('thema', newThema)        
     }
+
+    useEffect(()=>{
+        const takeThema = localStorage.getItem('thema')
+        setTema(takeThema as string)
+    },[])
+
     return (
         <AppContext.Provider value = {{
             tema,

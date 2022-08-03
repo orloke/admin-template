@@ -1,3 +1,4 @@
+import useAuth from '../data/hooks/useAuth';
 import { IconHouse, IconLogout, IconNotification, IconSettings } from './icons';
 import Logo from './Logo';
 import MenuItem from './MenuItem';
@@ -8,6 +9,8 @@ interface Props {
 }
 
 const Sidebar = (props: Props) => {
+
+  const {logout} = useAuth()
 
   return (
 
@@ -22,7 +25,7 @@ const Sidebar = (props: Props) => {
           </ul>
           <ul>
               <MenuItem 
-                onClick={()=> console.log('Logout')} 
+                onClick={logout} 
                 text='Sair' icon= {IconLogout} 
                 className = 'text-red-500 dark:text-red-400 hover:bg-red-500 dark:hover:text-white hover:text-white ' />
           </ul>
