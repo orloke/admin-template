@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import useAppData from "../data/hooks/useAppData";
 import DefenderRoute from "./auth/DefenderRoute";
-import Avatar from "./Avatar";
+import Avatar from "./Avatar/Avatar";
 import ButtonDarkMode from "./ButtonDrakMode";
 import Content from "./Content";
 import { IconMenu } from "./icons";
