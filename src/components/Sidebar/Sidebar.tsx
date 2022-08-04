@@ -1,14 +1,9 @@
-import useAuth from '../data/hooks/useAuth';
-import { IconHouse, IconLogout, IconNotification, IconSettings } from './icons';
-import Logo from './Logo';
-import MenuItem from './MenuItem';
+import useAuth from '../../data/hooks/useAuth';
+import { IconHouse, IconLogout, IconNotification, IconSettings } from '../icons';
+import Logo from '../Logo/Logo';
+import MenuItem from '../MenuItem';
 
-interface Props {
-    open: boolean;
-    setOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-const Sidebar = (props: Props) => {
+const Sidebar = () => {
 
   const {logout} = useAuth()
 
