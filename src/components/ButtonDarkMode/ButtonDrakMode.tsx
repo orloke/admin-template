@@ -1,4 +1,4 @@
-import { IconMoon, IconSun } from "./icons";
+import { IconMoon, IconSun } from "../icons";
 
 interface Props {
     thema?:string;
