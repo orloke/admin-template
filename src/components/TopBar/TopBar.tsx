@@ -1,17 +1,13 @@
 import React from "react";
 import Title from "../Title/Title";
 
-interface Props{
-    title: string;
-    caption: string;
+interface Props {
+  title: string;
+  caption: string;
 }
 
 const TopBar = (props: Props) => {
-  return (
-    <div className="">
-        <Title title={props.title} caption={props.caption}/>
-    </div>
-  )
-}
+  return <Title title={props.title} caption={props.caption} />;
+};
 
 export default TopBar;
