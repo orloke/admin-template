@@ -1,7 +1,7 @@
 import useAuth from '../../data/hooks/useAuth';
 import { IconHouse, IconLogout, IconNotification, IconSettings } from '../icons';
 import Logo from '../Logo/Logo';
-import MenuItem from '../MenuItem';
+import MenuItem from '../MenuItem/MenuItem';
 
 const Sidebar = () => {
 
