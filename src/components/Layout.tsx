@@ -34,7 +34,7 @@ const Layout = (props: Props) => {
                         </button>
                     </div>
                     <div className={`${open?'':'-ml-20 '}  ease-in-out duration-300`}>
-                        <Sidebar open={open} setOpen={setOpen} />
+                        <Sidebar/>
                     </div>
 
                 </div>
