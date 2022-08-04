@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react'
-import ButtonDarkMode from './ButtonDrakMode'
+import ButtonDarkMode from './ButtonDarkMode'
 import userEvent  from '@testing-library/user-event'
 
 describe('ButtonDarkMode component', () => {
