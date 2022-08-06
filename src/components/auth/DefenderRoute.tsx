@@ -1,12 +1,12 @@
 import Image from "next/image";
-import Router from "next/router";
+import  { useRouter } from "next/router";
 import { PropsWithChildren } from "react";
 import loadingGif from "../../../public/loading.gif";
 import useAuth from "../../data/hooks/useAuth";
 
 const DefenderRoute = (props: PropsWithChildren) => {
   const { user, loading } = useAuth();
-
+  const router = useRouter()
 
   const renderContents = () => {
     return <>{props.children}</>;
@@ -24,7 +24,7 @@ const DefenderRoute = (props: PropsWithChildren) => {
   } else if (loading) {
     return renderLoading();
   } else {
-    Router.push("/authentication");
+    router.push("/authentication");
     return null;
   }
 };

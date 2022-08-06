@@ -46,7 +46,7 @@ const Layout = (props: Props) => {
               open ? "" : "pl-2"
             } `}
           >
-            <TopBar title={props.title} caption={props.caption} />
+            <TopBar title={props.title} caption={props.caption}  />
             <Content>{props.children}</Content>
           </div>
         </div>

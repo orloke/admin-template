@@ -1,16 +1,21 @@
 import { render, screen } from "@testing-library/react";
 import Layout from "./Layout";
 
-jest.mock('next/router')
-
-
+jest.mock("next/router", () => {
+  return {
+    useRouter() {
+      return {
+        push: jest.fn(),
+      };
+    },
+  };
+});
 
 describe("Layout component", () => {
   test("render correctly", () => {
-    const spyRouter = jest.spyOn(require("next/router").default, "push");
     const { getByText } = render(
       <Layout title="Pagina Inicial" caption="Testando o layout">
-        Testando
+        Júnior Dering
       </Layout>
     );
   });
