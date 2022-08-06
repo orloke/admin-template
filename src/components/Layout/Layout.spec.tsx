@@ -1,4 +1,4 @@
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import Layout from "./Layout";
 
 jest.mock("next/router", () => {
@@ -13,10 +13,12 @@ jest.mock("next/router", () => {
 
 describe("Layout component", () => {
   test("render correctly", () => {
-    const { getByText } = render(
+    const screen = render(
       <Layout title="Pagina Inicial" caption="Testando o layout">
         Júnior Dering
       </Layout>
     );
+    screen.debug();
+
   });
 });
