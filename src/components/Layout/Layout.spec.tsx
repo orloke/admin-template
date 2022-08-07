@@ -1,4 +1,5 @@
-import { render } from "@testing-library/react";
+import { render, screen} from "@testing-library/react";
+import DefenderRoute from "../auth/DefenderRoute";
 import Layout from "./Layout";
 
 jest.mock("next/router", () => {
@@ -11,14 +12,32 @@ jest.mock("next/router", () => {
   };
 });
 
+jest.mock("../../data/hooks/useAuth", () => {
+  return jest.fn(() => {
+    return {
+      user: {
+        email: "user@example.com",
+      },
+      loading: false
+
+    };
+  });
+});
+
+
 describe("Layout component", () => {
-  test("render correctly", () => {
-    const screen = render(
+  const {getByText ,getByAltText} =  render(
+    <DefenderRoute>
       <Layout title="Pagina Inicial" caption="Testando o layout">
         Júnior Dering
       </Layout>
-    );
-    screen.debug();
-
+    </DefenderRoute>
+  )
+  it("should match with snapshot", () => {
+    expect(getByText('Pagina Inicial')).toBeInTheDocument()
+    expect(getByText('Júnior Dering')).toBeInTheDocument()
+    expect(getByText('Notificações')).toBeInTheDocument()
+    expect(getByText('Testando o layout')).toBeInTheDocument()
+    expect(getByAltText('imagem do usuario')).toBeInTheDocument()
   });
 });

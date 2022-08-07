@@ -21,12 +21,15 @@ const DefenderRoute = (props: PropsWithChildren) => {
 
   if (!loading && user?.email) {
     return renderContents();
-  } else if (loading) {
+  } 
+  else if (loading) {
     return renderLoading();
   } else {
     router.push("/authentication");
-    return null;
+    return null
   }
+
+
 };
 
 export default DefenderRoute;
