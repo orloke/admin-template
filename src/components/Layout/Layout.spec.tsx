@@ -33,7 +33,7 @@ describe("Layout component", () => {
       </Layout>
     </DefenderRoute>
   )
-  it("should match with snapshot", () => {
+  it("render correctly", () => {
     expect(getByText('Pagina Inicial')).toBeInTheDocument()
     expect(getByText('Júnior Dering')).toBeInTheDocument()
     expect(getByText('Notificações')).toBeInTheDocument()
