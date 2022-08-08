@@ -39,5 +39,9 @@ describe("Layout component", () => {
     expect(getByText('Notificações')).toBeInTheDocument()
     expect(getByText('Testando o layout')).toBeInTheDocument()
     expect(getByAltText('imagem do usuario')).toBeInTheDocument()
+    // const link = getByText('Escuro')
+    // userEvent.click(link);
+    // expect(getByAltText('Claro')).toBeInTheDocument()
+    // screen.debug()
   });
 });
